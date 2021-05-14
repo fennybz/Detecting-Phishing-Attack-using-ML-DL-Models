@@ -1,0 +1,9 @@
+This contains all the pre-trained pickle files of various Machine Learning Models.
+1. Bagged Decision Tree
+2. Random Forest
+3. Extra Trees
+4. Adaboost
+5. Stochastic Gradient Boosting
+6. Voting Ensemble
+7. Naive Bayes
+8. SVM
