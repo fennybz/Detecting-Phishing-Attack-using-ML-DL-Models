@@ -1,0 +1,1879 @@
+Delivered-To: fennybz15e@student.mes.ac.in
+Received: by 2002:a9d:3f24:0:0:0:0:0 with SMTP id m33csp4541409otc;
+        Tue, 16 Apr 2019 19:24:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwOJrCHtDQyIGswR4gUnyQ+xeWYaeFLzmVLY74sp6qf+tfkkMZUB5N/2OjIS7VyC9S00LqT
+X-Received: by 2002:aed:3ef1:: with SMTP id o46mr70398451qtf.123.1555467896805;
+        Tue, 16 Apr 2019 19:24:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1555467896; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GBxd4/84CMuxHC4+ZJKkxtkv42PQMiBgDIHYCqpe502bw6WMbBGj37FOw/aJUDAqiL
+         5exnZZQRwvDwHCDd7oiJsoMS0YKoVU1F5O0pov2zDfAcaxqSOKr8jbNLLgi+GzTl9mOp
+         zADySt5k7WKBphVRacrliltNyC/hNcFyPWIvysFCEcoopPYvtlOrf/j1Ryc/UE9vuGsI
+         hS/Bee8cAB4eveGzRG5pEqIC6xKsq9zTZjZRdwhBPUvZS967FBaXwOEG0ER+LUG6+SsN
+         6Gjnwt/TJItfIR+FYzsG9y/9YzX9k0uxv7LmW3AlcmyuMC4iGtCoT5rCcgC1fdaHV4QZ
+         2zyw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:list-unsubscribe:subject:to:from:mime-version
+         :dkim-signature;
+        bh=SLv2Hh8692qqcQZiLKw64/7gNDlKFxUopSrarMJrO+4=;
+        b=NYCQpUFcNJmFsX5KX6XgdfOzsDAuYIYCGl8AWiIKmg7XxhYa2TiTCPNRhQXPk376bf
+         Xv94lm5QXLA4URK9USqzn+cceZaaQZ7YyHU14gxzX/Y/4PZRXzws/L4xZDwMBBrf8a1b
+         qmVScuuvB4gDJfZRBSqC+sEBBG3fI4TuEii7WE+iNYH/fX+/Mrd8BJzTmVfYlfm5NVAs
+         a9KRchB98LZRcDqTkUTJLBasYgBXlTSCLpe1t4hgcpndqihzOHEtuyq9IoNK8ZJU8ALF
+         wNMGJdB/pA8RKvJoPoFYp2ey7mMtCWMcuihDa6TVR0NSvE2fLdmerUhuWIhYvwIhAWz5
+         pKMQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@quora.com header.s=pigeon header.b=BBoHAnwA;
+       spf=pass (google.com: domain of noreply@quora.com designates 52.203.132.108 as permitted sender) smtp.mailfrom=noreply@quora.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=quora.com
+Return-Path: <noreply@quora.com>
+Received: from o20.pigeon.quora.com (o20.pigeon.quora.com. [52.203.132.108])
+        by mx.google.com with ESMTPS id 10si915830qvw.64.2019.04.16.19.24.56
+        for <fennybz15e@student.mes.ac.in>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 16 Apr 2019 19:24:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@quora.com designates 52.203.132.108 as permitted sender) client-ip=52.203.132.108;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@quora.com header.s=pigeon header.b=BBoHAnwA;
+       spf=pass (google.com: domain of noreply@quora.com designates 52.203.132.108 as permitted sender) smtp.mailfrom=noreply@quora.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=quora.com
+Received: 
+	by pigeon-at-10015 (OpenSMTPD) with ESMTP id 1aab820d
+	for <fennybz15e@student.mes.ac.in>;
+	Wed, 17 Apr 2019 02:24:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=quora.com; h=
+	content-type:mime-version:from:to:subject:list-unsubscribe:date
+	:message-id; s=pigeon; bh=isnSv1tGI8A6EE5FsHdlD1VSgNw=; b=BBoHAn
+	wA+Dby7I76uEPVSq+BmOmAJ0KCT7rVkikQNe3QelNWNm8lNNeWXas9eIt03V/aTV
+	ru1HiEwv9i39iVzIuwEdk8iC4fmwIKla90kzVHGfVt6Ty/uEROZPFXGDWr99Qncw
+	GlNVTU/0BcZ+BI50EfS+Zya3KvRcbCo1bcTf3gf83nb2sGOUH0JF0sHTrdE5kN5d
+	ERCsxxQifoEfga06eysd+0GxoT2oO4cf7fMK17YS/m0K7rjNKuD4BQtEw8aURgzu
+	6yrkqE84ssq9UtvYHzJYaB/9q/SqLIuoWSeG7Ac+R2wt9fbzUNFeIvFOWCyPuBLC
+	kvE+rLqBRp2z0R3Q==
+Content-Type: multipart/alternative;
+ boundary="===============0723980183040625210=="
+MIME-Version: 1.0
+From: Quora Digest <digest-noreply@quora.com>
+To: fennybz15e@student.mes.ac.in
+Subject: =?utf-8?q?Can_I_go_to_Australia_with_a_visiting_visa_and_later_get_a_PR=3F?=
+List-Unsubscribe: <http://www.quora.com/email_optout/qemail_unsubscribe?email_track_id=667c7addf61c4b6bb6b29a1b5747dc1d&t=1555467891657271&token=63551466e66dd6aff87842173f48ba831c0e90c69e05de3d2f32cde883d7eeaa668f223a5e24ebf1bfea1c7194be6ad68fd4ff3e2d5289a91237ed7471d15012&type=2&uid=329051762>
+X-CID: 85kT_YKcFKjysrVog89DpwWSKyXCqQFvMGOdzyO8tQY_r28yZJPL5PohuBNTLfr4sK68i0WiCmqH-GIlwIr-tYy7-qUU9EcfdEZRqv0OcKBbZUMKNC-etANexgVwtJk8Ldm45C7segABAgA=
+Date: Wed, 17 Apr 2019 02:24:56 +0000
+Message-ID: <85kT_YKcFKjysrVog89DpwWSKyXCqQFvMGOdzyO8tQY_r28yZJPL5PohuBNTLfr4sK68i0WiCmqH-GIlwIr-tYy7-qUU9EcfdEZRqv0OcKBbZUMKNC-etANexgVwtJk8Ldm45C7segABAgA=@t2.msgid.quoramail.com>
+X-SMTPAPI: =?utf-8?q?=7B=22unique=5Fargs=22=3A_=7B=22Message-ID=22=3A_=22=3C85kT=5FYKcF?=
+ =?utf-8?q?KjysrVog89DpwWSKyXCqQFvMGOdzyO8tQY=5Fr28yZJPL5PohuBNTLfr4sK68i0Wi?=
+ =?utf-8?q?CmqH-GIlwIr-tYy7-qUU9EcfdEZRqv0OcKBbZUMKNC-etANexgVwtJk8Ldm45C7se?=
+ =?utf-8?q?gABAgA=3D=40t2=2Emsgid=2Equoramail=2Ecom=3E=22=2C_=22account=22?=
+ =?utf-8?q?=3A_=22digest=22=2C_=22email=5Ftype=22=3A_2=2C_=22ip=5Fpool=22=3A?=
+ =?utf-8?q?_=22main=22=2C_=22X-QMSG=22=3A_=22GN5N=5FHFrie7haSiHavrpYF9WWawWF?=
+ =?utf-8?q?bN3iTpSN3jIHCJzsNgL29EbIJmcpuLqYx3synD=5Fu0BDlg5VDVNuBrbLyYylgNPI?=
+ =?utf-8?q?-QmbQdcFi2RXa4Mj=5FqaS68iakHffkjGYFh7po0u4uBJ1fCQNeW6Sq4jyGns2gVO?=
+ =?utf-8?q?AJv6QwikB=5FUWMjNL-Co3H2-IhnLYoLDGw=5F3tqGqo0JA9GuCDa1Z=5F05b=5FU?=
+ =?utf-8?q?WsE=5FLjOJENoDuDB0SLcxUClv2=5FWMcotKdiC3cD5jaqLQeIWviMP0uUmeEhBZZ?=
+ =?utf-8?q?OuC61d8iDBCsx8fCMGa7WCltfrlL7ed7MaIohP0j0LtJ1cC=5FS75t2RlRwmzQeVY?=
+ =?utf-8?q?zH8wYV0QhYCg4KBZgOOoKjRXw7H0tdQv598m22laVxEZKG4L2r5DvY5tGSVfczIUt?=
+ =?utf-8?q?AFEUPgvPAKIbtDT7s6TtgM3WFcmA9Sgloa2yqfeSDQC0nMdINye1ewRP=5FiYBqK8?=
+ =?utf-8?q?=5Fb7AJEAWLi5HBgdESWTpEU2e9rngyYucNSqGzh-wXa9MoJZOgBhKqmLV-ok8AkN?=
+ =?utf-8?q?HdKdCrWD2EogEDxYP81n0F5kBp881ZTMcvYw99tFo6BGeN4TqdZRF7-Abiy7Yvebs?=
+ =?utf-8?q?=5FzruFO87AAECAA=3D=3D=22=7D=2C_=22category=22=3A_=5B=22account?=
+ =?utf-8?q?=5Fdigest=22=2C_=22email=5Ftype=5F2=22=2C_=22ip=5Fpool=5Fmain=22?=
+ =?utf-8?q?=5D=2C_=22filters=22=3A_=7B=22bypass=5Flist=5Fmanagement=22=3A_?=
+ =?utf-8?q?=7B=22settings=22=3A_=7B=22enable=22=3A_1=7D=7D=7D=2C_=22ip=5Fpoo?=
+ =?utf-8?q?l=22=3A_=22main=22=7D?=
+X-QMSG: =?utf-8?q?GN5N=5FHFrie7haSiHavrpYF9WWawWFbN3iTpSN3jIHCJzsNgL29EbIJmcpuLqYx3s?=
+ =?utf-8?q?ynD=5Fu0BDlg5VDVNuBrbLyYylgNPI-QmbQdcFi2RXa4Mj=5FqaS68iakHffkjGYF?=
+ =?utf-8?q?h7po0u4uBJ1fCQNeW6Sq4jyGns2gVOAJv6QwikB=5FUWMjNL-Co3H2-IhnLYoLDGw?=
+ =?utf-8?q?=5F3tqGqo0JA9GuCDa1Z=5F05b=5FUWsE=5FLjOJENoDuDB0SLcxUClv2=5FWMcot?=
+ =?utf-8?q?KdiC3cD5jaqLQeIWviMP0uUmeEhBZZOuC61d8iDBCsx8fCMGa7WCltfrlL7ed7MaI?=
+ =?utf-8?q?ohP0j0LtJ1cC=5FS75t2RlRwmzQeVYzH8wYV0QhYCg4KBZgOOoKjRXw7H0tdQv598?=
+ =?utf-8?q?m22laVxEZKG4L2r5DvY5tGSVfczIUtAFEUPgvPAKIbtDT7s6TtgM3WFcmA9Sgloa2?=
+ =?utf-8?q?yqfeSDQC0nMdINye1ewRP=5FiYBqK8=5Fb7AJEAWLi5HBgdESWTpEU2e9rngyYucN?=
+ =?utf-8?q?SqGzh-wXa9MoJZOgBhKqmLV-ok8AkNHdKdCrWD2EogEDxYP81n0F5kBp881ZTMcvY?=
+ =?utf-8?q?w99tFo6BGeN4TqdZRF7-Abiy7Yvebs=5FzruFO87AAECAA=3D=3D?=
+
+--===============0723980183040625210==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+FENNY's Digest
+Your Quora Digest
+
+-----
+
+
+Question: Can I go to Australia with a visiting visa and later get a PR?
+
+Answer from Chandan Singh
+
+Yes you can go Australia on visitor visa and later apply for Australia PR.
+
+But keep these thing=E2=80=99s in your mind both are different visa, so you=
+ cannot convert one into another
+Read More: http://www.quora.com/Can-I-go-to-Australia-with-a-visiting-visa-=
+and-later-get-a-PR#ans132641404
+-----
+Question: is NCERT enough for getting 600 in NEET?
+
+Answer from Himanshu Rajput
+
+Lets make some assumption first:
+
+1. You are currently studying in some coaching.
+2. You follow the notes of thw coaching very faithfully. (For phy and chem)
+3. You dont study
+Read More: http://www.quora.com/is-NCERT-enough-for-getting-600-in-NEET-1#a=
+ns31713359
+-----
+Question: If x^y=3Dy^x, is it true that x=3Dy?
+
+Answer from John K Williamsson
+
+If [math]x^{y} =3D y^{x}[/math], then is it true that x =3D y ?
+
+.
+
+Yes!
+and
+No!!!
+
+.
+
+If x =3D 1 and y =3D 1, then we have 1=C2=B9 =3D 1=C2=B9 =E2=80=A6 true =E2=
+=80=A6 x =3D y
+
+If x =3D 3 and y =3D 3, then we have 3=C2=B3
+Read More: http://www.quora.com/If-x-y-y-x-is-it-true-that-x-y#ans132166030
+-----
+Question: My 13 year old son threw his iPhone 6 down the stairs in order fo=
+r me to buy him a new iPhone X? How do I discipline him? Should I buy him a=
+ new phone?
+
+Answer from Johan Arnehed
+
+If my son had done this, taken at face value as written, his phone was perf=
+ectly functional and the only perceived wrong with it was that it was not t=
+he latest model, I would=20
+Read More: http://www.quora.com/My-13-year-old-son-threw-his-iPhone-6-down-=
+the-stairs-in-order-for-me-to-buy-him-a-new-iPhone-X-How-do-I-discipline-hi=
+m-Should-I-buy-him-a-new-phone#ans134369473
+-----
+Question: How was your JEE Main paper?
+
+Answer from Elima Sharma
+
+Pretty weird=E2=80=A6
+
+Exam date : 12/04/2019 2nd slot =E2=80=A6
+
+I had my center in Delhi so had to travel 2 days before=E2=80=A6
+
+10/04 : reached Delhi
+
+11/04 : eat lots of yummy food and stays chi
+Read More: http://www.quora.com/How-was-your-JEE-Main-paper#ans133587643
+-----
+Question: Is life in US better than India?
+
+Answer from Priyanku Baruah
+
+Let me start by telling you some experiences.
+
+I recently shifted to US. In California, there are potholes on the roads, l=
+arge enough to damage the rim of my new car, which I=20
+Read More: http://www.quora.com/Is-life-in-US-better-than-India#ans133008518
+-----
+Question: Why couldn't Aemon Targaryen recognize Jon Snow as his own blood =
+when alive?
+
+Answer from Marc Turcotte
+
+I think Aemon knew that Jon is a Taragaryen. Look back at the scene season =
+5 ep 5 when he mentionned =E2=80=9CA Targaryen alone in the world is a terr=
+ible thing.=E2=80=9D
+
+Then Jon comes in a
+Read More: http://www.quora.com/Why-couldnt-Aemon-Targaryen-recognize-Jon-S=
+now-as-his-own-blood-when-alive#ans60312449
+-----
+Question: My mom won't buy me an iPhone even though I am her son. What shou=
+ld I do?
+
+Answer from Matt Lansell
+
+Let=E2=80=99s have a quick look at your profile eh, Ricardo Gonzalez, and a=
+t some of the 8000+ questions you=E2=80=99ve asked.
+
+So you=E2=80=99ve got =E2=80=9Ca good amount of stocks=E2=80=9D, a car, a p=
+repaid credi
+Read More: http://www.quora.com/My-mom-wont-buy-me-an-iPhone-even-though-I-=
+am-her-son-What-should-I-do#ans134520435
+-----
+Question: Can someone get a rank after failing thrice in Final CA and left =
+with 3 months to study?
+
+Answer from Namril Shah
+
+I believe I=E2=80=99m partly eligible to answer this question because I fai=
+led once and not thrice. Also, I was left with a little above 3 months (103=
+ days) to prepare for the examina
+Read More: http://www.quora.com/Can-someone-get-a-rank-after-failing-thrice=
+-in-Final-CA-and-left-with-3-months-to-study#ans131835782
+-----
+Question: Are carbohydrates really making us fat, or are we eating too much=
+ and exercising too little? After all, many of our ancestors ate bread, pot=
+atoes, rice and pasta without weight gain. What do you think?
+
+Answer from Richard Reynolds
+
+I can only use my experience as an example of how I dropped 5o pounds witho=
+ut exercising. I did two things 1) I stopped eating grains, sugar, and bad =
+fats. My diet consisted o
+Read More: http://www.quora.com/Are-carbohydrates-really-making-us-fat-or-a=
+re-we-eating-too-much-and-exercising-too-little-After-all-many-of-our-ances=
+tors-ate-bread-potatoes-rice-and-pasta-without-weight-gain-What-do-you-thin=
+k#ans96162711
+-----
+
+-----
+To control which emails we send you, visit: https://www.quora.com/qemail/tr=
+ack_click?aoid&aoty=3D14&aty=3D4&click_pos=3D0&ct=3D1555467891635692&et=3D2=
+&id=3D667c7addf61c4b6bb6b29a1b5747dc1d&request_id=3D1990501924725924020&sou=
+rce&src=3D1&st=3D1555467891635692&stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7=
+C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjT=
+tzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&ty&ty_data&uid=3DMGukj1=
+ODyua&v=3D0
+
+To unsubscribe from this type of email, visit: http://www.quora.com/email_o=
+ptout/qemail_unsubscribe?email_track_id=3D667c7addf61c4b6bb6b29a1b5747dc1d&=
+t=3D1555467892226582&token=3D7bbda7979cf1850b35843eaf7041df2560e1872d4cd6fe=
+6b5c44a122adbd874cf175e171c71e57a18fbfb184ed69b0bab1052414b10d66bce36d2c574=
+1bc5f1a&type=3D2&uid=3D329051762
+--===============0723980183040625210==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html><head><style type=3D"text/css">@media screen and (max-=
+width:480px){.background_inner{padding:0!important;background:#fff!importan=
+t}.container{padding:0 8px 16px!important}.footer_container{border-top:1px =
+solid #e2e2e2!important}.AnnualThankYouEmail .background_inner{padding:10px=
+ 0!important}.polish_background_inner{padding:10px 0!important}.polish_head=
+er_logo img.header_logo_img{width:118px!important;height:40px!important}.po=
+lish_header_title{font-size:16px!important;padding-top:0!important;padding-=
+bottom:5px!important}.polish_question_text{line-height:1.3!important}.polis=
+h_story .voters_list,.polish_story .user_link{line-height:1.5!important}.po=
+lish_story .truncated_q_text,.polish_story .qtext_para{line-height:1.5!impo=
+rtant}.polish_story .content_header{padding:6px 0!important}.EndOfYearLookb=
+ackEmail .stat_large{font-size:28px!important}.EndOfYearLookbackEmail .cont=
+ent_text{text-align:center!important}.EndOfYearLookbackEmail .half_column{w=
+idth:100%!important}.EndOfYearLookbackEmail .img_wrapper{margin:10px auto!i=
+mportant}.TopicDigestEmail .topic_digest_header_logo img.polish_header_logo=
+_img{width:89px!important;height:30px!important}.TopicDigestEmail .topic_di=
+gest_header_title{font-size:16px!important;padding-top:0!important;padding-=
+bottom:5px!important}.email_app_link-content{display:block!important;text-a=
+lign:center!important}.email_app_link-text,.email_app_link-badges_wrapper{d=
+isplay:block!important}.email_app_link-text{padding-bottom:0!important;box-=
+sizing:border-box!important}.email_app_link-badges_wrapper{padding-left:10p=
+x!important}}</style><script type=3D"application/json" data-scope=3D"inboxm=
+arkup"> {"api_version": "1.0", "publisher": {"api_key": "e803eb69acac8eaf61=
+f6b4d120a664c1", "name": "Quora"}, "updates": {"snippets": [{"icon": "BOOKM=
+ARK", "message": "Can I go to Australia with a visiting visa and later get =
+a PR?"}, {"icon": "BOOKMARK", "message": "is NCERT enough for getting 600 i=
+n NEET?"}, {"icon": "BOOKMARK", "message": "If x^y=3Dy^x, is it true that x=
+=3Dy?"}, {"icon": "BOOKMARK", "message": "My 13 year old son threw his iPho=
+ne 6 down the stairs in order for me to buy him a ne...?"}]}, "cards": [{"t=
+itle": "Quora Digest", "subtitle": "Top Stories For You", "widgets": [{"typ=
+e": "LINK", "title": "Can I go to Australia with a visiting visa and later =
+get a PR?", "description": "Yes you can go Australia on visitor visa and la=
+ter apply for Australia PR.  But keep these thing\u2019s i...", "url": "htt=
+ps://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjog=
+IjE5OTA1MDE5MjQ3MjU5MjQwMjB8MXwxfDEzMjY0MTQwNCJ9&al_pri=3DItemContentClickt=
+hrough&aoid=3DdE4bKTroFSh&aoty=3D1&aty=3D4&click_pos=3D1&ct=3D1555467891635=
+692&et=3D2&id=3D667c7addf61c4b6bb6b29a1b5747dc1d&request_id=3D1990501924725=
+924020&source=3D1&src=3D1&st=3D1555467891635692&stories=3D1_dE4bKTroFSh%7C1=
+_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3l=
+d%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&ty=3D1&ty=
+_data=3DdE4bKTroFSh&uid=3DMGukj1ODyua&v=3D0&ref=3Dinbox"}, {"type": "LINK",=
+ "title": "is NCERT enough for getting 600 in NEET?", "description": "Lets =
+make some assumption first:  1. You are currently studying in some coaching=
+. 2. You follow the...", "url": "https://www.quora.com/qemail/track_click?a=
+l_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8MnwxfDMxNzE=
+zMzU5In0%3D&al_pri=3DItemContentClickthrough&aoid=3D4GKdVcH40DT&aoty=3D1&at=
+y=3D4&click_pos=3D2&ct=3D1555467891635692&et=3D2&id=3D667c7addf61c4b6bb6b29=
+a1b5747dc1d&request_id=3D1990501924725924020&source=3D1&src=3D1&st=3D155546=
+7891635692&stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn7=
+5dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1=
+_b2cWRHZpKgK%7C1_1nsSbldkE5U&ty=3D1&ty_data=3D4GKdVcH40DT&uid=3DMGukj1ODyua=
+&v=3D0&ref=3Dinbox"}, {"type": "LINK", "title": "If x^y=3Dy^x, is it true t=
+hat x=3Dy?", "description": "If x^{y} =3D y^{x}, then is it true that x =3D=
+ y ?  .  Yes! and No!!!  .  If x =3D 1 and y =3D 1, then we ha...", "url": =
+"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNo=
+IjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8M3wxfDEzMjE2NjAzMCJ9&al_pri=3DItemContentCl=
+ickthrough&aoid=3D1R2N8OzAVLQ&aoty=3D1&aty=3D4&click_pos=3D3&ct=3D155546789=
+1635692&et=3D2&id=3D667c7addf61c4b6bb6b29a1b5747dc1d&request_id=3D199050192=
+4725924020&source=3D1&src=3D1&st=3D1555467891635692&stories=3D1_dE4bKTroFSh=
+%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grP=
+hE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&ty=3D=
+1&ty_data=3D1R2N8OzAVLQ&uid=3DMGukj1ODyua&v=3D0&ref=3Dinbox"}, {"type": "LI=
+NK", "title": "My 13 year old son threw his iPhone 6 down the stairs in ord=
+er for me to buy him a ne...?", "description": "If my son had done this, ta=
+ken at face value as written, his phone was perfectly functional and the...=
+", "url": "https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMz=
+MsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NHwxfDEzNDM2OTQ3MyJ9&al_pri=3DIte=
+mContentClickthrough&aoid=3D8Hn75dB6sM4&aoty=3D1&aty=3D4&click_pos=3D4&ct=
+=3D1555467891635692&et=3D2&id=3D667c7addf61c4b6bb6b29a1b5747dc1d&request_id=
+=3D1990501924725924020&source=3D1&src=3D1&st=3D1555467891635692&stories=3D1=
+_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb=
+4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSb=
+ldkE5U&ty=3D1&ty_data=3D8Hn75dB6sM4&uid=3DMGukj1ODyua&v=3D0&ref=3Dinbox", "=
+image_url": "http://qph.fs.quoracdn.net/main-qimg-38fcf58c0b9150b170c3a9a8e=
+8510493"}]}], "entity": {"external_key": "QuoraDigest", "title": "Quora Dig=
+est", "subtitle": "Latest: Apr 16", "main_image_url": "http://qsf.fs.quorac=
+dn.net/-3-images.email.inbox_markup.Illustration_InboxBanner_1700x1200.png-=
+26-37d6d76e905680b9.png", "avatar_image_url": "http://qsf.fs.quoracdn.net/-=
+3-images.email.inbox_markup.Reversed_Logo_500x500.png-26-80917a4a4be72589.p=
+ng"}} </script></head><body class=3D"email_body"><html>
+<head></head>
+<body style=3D"-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; ma=
+rgin:0; padding:0; width:100%" width=3D"100%">
+<table class=3D"EmailComponent DigestEmail Email background" cellpadding=3D=
+"0" border=3D"0" style=3D'border-collapse:collapse; mso-table-lspace:0; mso=
+-table-rspace:0; background:#eee; font-family:"Helvetica Neue", Helvetica, =
+Arial, sans-serif; font-size:13px; height:100%; text-align:left; width:100%=
+' height=3D"100%" align=3D"left" width=3D"100%"><tbody><tr><td class=3D"pol=
+ish_background_inner" align=3D"center" valign=3D"top" style=3D"border-colla=
+pse:collapse; background:#fff; padding:0"><table cellpadding=3D"0" cellspac=
+ing=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:=
+0; mso-table-rspace:0"><tbody>
+<tr><td class=3D"container" align=3D"left" style=3D"border-collapse:collaps=
+e; background:#fff; border-radius:3px; height:100%; padding:32px; width:525=
+px" height=3D"100%" width=3D"525"><table class=3D"polish_container_inner" s=
+tyle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; b=
+order:0; cellpadding:0; cellspacing:0; width:100%" width=3D"100%"><tbody>
+<tr><td class=3D"polish_header" style=3D"border-collapse:collapse">
+<span style=3D"color:white; font-size:1px; display:block;">Answer: Yes you =
+can go Australia on visitor visa and later apply for Australia.=E2=80=8B.=
+=E2=80=8B.=E2=80=8B</span><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" width=3D"100%" style=3D"border-collapse:collapse; mso-table-lspace:0=
+; mso-table-rspace:0"><tbody>
+<tr><td class=3D"polish_header_logo" style=3D"border-collapse:collapse; tex=
+t-align:center" align=3D"center"><a href=3D"https://www.quora.com/qemail/tr=
+ack_click?aoid&amp;aoty=3D7&amp;aty=3D4&amp;click_pos=3D0&amp;ct=3D15554678=
+91635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_i=
+d=3D1990501924725924020&amp;source&amp;src=3D1&amp;st=3D1555467891635692&am=
+p;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7=
+C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZp=
+KgK%7C1_1nsSbldkE5U&amp;ty&amp;ty_data&amp;uid=3DMGukj1ODyua&amp;v=3D0" sty=
+le=3D"color:#2b6dad; text-decoration:none"><img class=3D"header_logo_img" s=
+rc=3D"http://qsf.fs.quoracdn.net/-3-images.logo.WordmarkLogo_bg_592x200_4x.=
+png-26-60d621643a41c203.png" alt=3D"Quora" style=3D"-ms-interpolation-mode:=
+bicubic; outline:0; text-decoration:none; border:0; height:50px; width:148p=
+x" height=3D"50" width=3D"148"></a></td></tr>
+<tr><td class=3D"polish_header_title" style=3D'border-collapse:collapse; te=
+xt-align:center; color:#333; font-family:Georgia, Times, "Times New Roman",=
+ "Hiragino Kaku Gothic Pro", "Meiryo", serif; font-size:19px; font-weight:4=
+00; padding-bottom:10px; padding-top:2px' align=3D"center">FENNY's Digest</=
+td></tr>
+</tbody></table>
+</td></tr>
+<tr class=3D"body_container" id=3D"simple-content-row"><td class=3D"body_co=
+ntent" bgcolor=3D"#ffffff" style=3D"border-collapse:collapse"><table style=
+=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width=
+:100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%"><tbo=
+dy><tr>
+<td style=3D"border-collapse:collapse"><table style=3D"border-collapse:coll=
+apse; mso-table-lspace:0; mso-table-rspace:0; width:100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0" width=3D"100%"><tbody><tr><td style=3D"bord=
+er-collapse:collapse">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" styl=
+e=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><tbo=
+dy><tr><td class=3D"section_header" style=3D"border-collapse:collapse; bord=
+er-bottom:1px solid #e2e2e2; font-size:12px; margin-top:20px; padding-botto=
+m:4px; text-transform:uppercase">Top Stories For You</td></tr></tbody></tab=
+le>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|1|1|132641404"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__=
+w2_wlIlmt2j22_actionable"><table class=3D"story_wrapper" cellspacing=3D"0" =
+border=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-tab=
+le-rspace:0; width:100%" width=3D"100%"><tbody><tr><td class=3D"story first=
+_story" style=3D"border-collapse:collapse; border-bottom:0; padding:20px 0;=
+ padding-top:15px"><table class=3D"digest_story_wrapper" cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" style=3D"border-collapse:collapse; mso-table=
+-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8MXwxfDEzMjY0MTQwNCJ9&amp;al_pri=3DQuesti=
+onLinkClickthrough&amp;aoid=3Db31k17RaXOj&amp;aoty=3D2&amp;aty=3D4&amp;clic=
+k_pos=3D1&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b=
+29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3DdE4bKTroFSh&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">Can I go to Au=
+stralia with a visiting visa and later get a PR?</span></a></td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3DaBHp8PHaRxx&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D1&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3DdE4bKTroFSh&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j97">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j98_me=
+nu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j98_menu_contents"=
+> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j98_link"><img class=3D"profile_photo_img" src=3D"http://qph.fs.quoracdn=
+.net/main-thumb-310857059-50-kpodxuuinvutaoyfbrysxjctpaugdvno.jpeg" alt=3D"=
+Chandan Singh" style=3D"-ms-interpolation-mode:bicubic; outline:0; text-dec=
+oration:none; border:0; border-radius:100px; display:block; height:40px; wi=
+dth:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3DaBHp8PHaRxx&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D1&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3DdE4bKTroFSh&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">Chandan Singh</a><span style=3D"font=
+-size:13px">, Senior Immigration Consultant at Abhinav Outsourcings Pvt Ltd=
+ (2014-present)</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3DdE4bKTroFSh&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D1&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3DdE4bKTroFSh&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written Apr=
+ 8</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8MXwxfDEzMjY0MTQwNCJ9&amp;al_pri=3DItemCo=
+ntentClickthrough&amp;aoid=3DdE4bKTroFSh&amp;aoty=3D1&amp;aty=3D4&amp;click=
+_pos=3D1&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b2=
+9a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D=
+1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1=
+_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtz=
+Q%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D=
+dE4bKTroFSh&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-deco=
+ration:none"><div id=3D"wlIlmt2j35"><div class=3D"truncated_q_text truncate=
+d_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEmail =
+TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j36_truncated" style=3D"line-hei=
+ght:1.6; display:inline">
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">Yes you can g=
+o Australia on visitor visa and later apply for Australia PR.</p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline">But keep these thing=E2=80=99s in your mind =
+both are different visa, so you cannot convert one into anothe...</p></span=
+> <a class=3D"read_more_blue" href=3D"https://www.quora.com/qemail/track_cl=
+ick?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8MXwxfD=
+EzMjY0MTQwNCJ9&amp;al_pri=3DReadMoreLinkClickthrough&amp;aoid=3DdE4bKTroFSh=
+&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D1&amp;ct=3D1555467891635692&amp;e=
+t=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_id=3D1990501924=
+725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635692&amp;stories=
+=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof=
+8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1=
+nsSbldkE5U&amp;ty=3D1&amp;ty_data=3DdE4bKTroFSh&amp;uid=3DMGukj1ODyua&amp;v=
+=3D0" style=3D"color:#168de9; text-decoration:none">Read More =C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table></div></div>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|2|1|31713359"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__w=
+2_wlIlmt2j23_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8MnwxfDMxNzEzMzU5In0%3D&amp;al_pri=3DQues=
+tionLinkClickthrough&amp;aoid=3D9lk6NBl5gtY&amp;aoty=3D2&amp;aty=3D4&amp;cl=
+ick_pos=3D2&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb=
+6b29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3D4GKdVcH40DT&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">is NCERT enoug=
+h for getting 600 in NEET?</span></a></td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3DbDp8gQV9JWB&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D2&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D4GKdVcH40DT&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j104">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j105_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j105_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j105_link"><img class=3D"profile_photo_img" src=3D"http://qph.fs.quoracd=
+n.net/main-thumb-167621508-50-xqtnvtelmlxdpbxwnwdkqmbbolrvynir.jpeg" alt=3D=
+"Himanshu Rajput" style=3D"-ms-interpolation-mode:bicubic; outline:0; text-=
+decoration:none; border:0; border-radius:100px; display:block; height:40px;=
+ width:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3DbDp8gQV9JWB&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D2&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D4GKdVcH40DT&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">Himanshu Rajput</a><span style=3D"fo=
+nt-size:13px">, Took NEET 2017.</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3D4GKdVcH40DT&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D2&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D4GKdVcH40DT&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written Dec=
+ 1, 2016</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8MnwxfDMxNzEzMzU5In0%3D&amp;al_pri=3DItem=
+ContentClickthrough&amp;aoid=3D4GKdVcH40DT&amp;aoty=3D1&amp;aty=3D4&amp;cli=
+ck_pos=3D2&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6=
+b29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3D4GKdVcH40DT&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none"><div id=3D"wlIlmt2j39"><div class=3D"truncated_q_text trunc=
+ated_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEma=
+il TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j40_truncated" style=3D"line-=
+height:1.6; display:inline">
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">Lets make som=
+e assumption first:</p>
+<ol>
+<li>You are currently studying in some coaching.</li>
+<li>You follow the notes of thw coaching very faithfully. (For phy and chem=
+)</li>
+<li>You dont study from the ...</li>
+</ol></span> <a class=3D"read_more_blue" href=3D"https://www.quora.com/qema=
+il/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQ=
+wMjB8MnwxfDMxNzEzMzU5In0%3D&amp;al_pri=3DReadMoreLinkClickthrough&amp;aoid=
+=3D4GKdVcH40DT&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D2&amp;ct=3D15554678=
+91635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_i=
+d=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D155546789163569=
+2&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6s=
+M4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cW=
+RHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D4GKdVcH40DT&amp;uid=3DMGuk=
+j1ODyua&amp;v=3D0" style=3D"color:#168de9; text-decoration:none">Read More =
+=C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<a href=3D"https://www.quora.com/_/cli?ct=3D1555467891635692&amp;id=3D667c7=
+addf61c4b6bb6b29a1b5747dc1d&amp;is_mobile=3DFalse&amp;uid=3DMGukj1ODyua" st=
+yle=3D"color:#2b6dad; text-decoration:none"><img style=3D"-ms-interpolation=
+-mode:bicubic; outline:0; text-decoration:none; border:0; max-width:320px" =
+src=3D"https://www.quora.com/_/imp?ct=3D1555467891635692&amp;id=3D667c7addf=
+61c4b6bb6b29a1b5747dc1d&amp;is_mobile=3DFalse&amp;uid=3DMGukj1ODyua"></a><d=
+iv class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-clog=
+-metadata=3D'{"action_log_target": {"type": 33, "hash": "199050192472592402=
+0|3|1|132166030"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__w2=
+_wlIlmt2j25_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8M3wxfDEzMjE2NjAzMCJ9&amp;al_pri=3DQuesti=
+onLinkClickthrough&amp;aoid=3DbnHQJhc3u4P&amp;aoty=3D2&amp;aty=3D4&amp;clic=
+k_pos=3D3&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b=
+29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3D1R2N8OzAVLQ&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">If x^y=3Dy^x, =
+is it true that x=3Dy?</span></a></td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3DRXu4FJJc6XY&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D3&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D1R2N8OzAVLQ&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j111">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j112_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j112_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j112_link"><img class=3D"profile_photo_img" src=3D"http://qph.fs.quoracd=
+n.net/main-thumb-272764079-50-jjaxgiiodzkjhycyzlieccyyutfjtmuv.jpeg" alt=3D=
+"John K Williamsson" style=3D"-ms-interpolation-mode:bicubic; outline:0; te=
+xt-decoration:none; border:0; border-radius:100px; display:block; height:40=
+px; width:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3DRXu4FJJc6XY&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D3&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D1R2N8OzAVLQ&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">John K Williamsson</a><span style=3D=
+"font-size:13px">, MS Math Minor, Emporia State University (1979)</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3D1R2N8OzAVLQ&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D3&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D1R2N8OzAVLQ&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written Apr=
+ 5</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8M3wxfDEzMjE2NjAzMCJ9&amp;al_pri=3DItemCo=
+ntentClickthrough&amp;aoid=3D1R2N8OzAVLQ&amp;aoty=3D1&amp;aty=3D4&amp;click=
+_pos=3D3&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b2=
+9a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D=
+1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1=
+_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtz=
+Q%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D=
+1R2N8OzAVLQ&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-deco=
+ration:none"><div id=3D"wlIlmt2j43"><div class=3D"truncated_q_text truncate=
+d_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEmail =
+TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j44_truncated" style=3D"line-hei=
+ght:1.6; display:inline">
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline"><b style=3D"f=
+ont-weight:400">If</b> <span class=3D"render_latex">[math]x^{y} =3D y^{x}[/=
+math]</span><b style=3D"font-weight:400">, then is it true that x =3D y ?</=
+b></p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline">.</p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline"><b style=3D"font-weight:400">Yes! </b>and...=
+</p></span> <a class=3D"read_more_blue" href=3D"https://www.quora.com/qemai=
+l/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQw=
+MjB8M3wxfDEzMjE2NjAzMCJ9&amp;al_pri=3DReadMoreLinkClickthrough&amp;aoid=3D1=
+R2N8OzAVLQ&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D3&amp;ct=3D155546789163=
+5692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_id=3D=
+1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635692&am=
+p;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7=
+C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZp=
+KgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D1R2N8OzAVLQ&amp;uid=3DMGukj1OD=
+yua&amp;v=3D0" style=3D"color:#168de9; text-decoration:none">Read More =C2=
+=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|4|1|134369473"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__=
+w2_wlIlmt2j26_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NHwxfDEzNDM2OTQ3MyJ9&amp;al_pri=3DQuesti=
+onLinkClickthrough&amp;aoid=3D9uQHONm52u8&amp;aoty=3D2&amp;aty=3D4&amp;clic=
+k_pos=3D4&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b=
+29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3D8Hn75dB6sM4&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">My 13 year old=
+ son threw his iPhone 6 down the stairs in order for me to buy him a new iP=
+hone X? How do I discipline him? Should I buy him a new phone?</span></a></=
+td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3DqAgydjzjSHS&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D4&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D8Hn75dB6sM4&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j118">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j119_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j119_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j119_link"><img class=3D"profile_photo_img" src=3D"http://qsf.fs.quoracd=
+n.net/-3-images.new_grid.profile_pic_default_small.png-26-679bc670f786484c.=
+png" alt=3D"Johan Arnehed" style=3D"-ms-interpolation-mode:bicubic; outline=
+:0; text-decoration:none; border:0; border-radius:100px; display:block; hei=
+ght:40px; width:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3DqAgydjzjSHS&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D4&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D8Hn75dB6sM4&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">Johan Arnehed</a><span style=3D"font=
+-size:13px">, Father</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3D8Hn75dB6sM4&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D4&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D8Hn75dB6sM4&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written 16h=
+ ago</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NHwxfDEzNDM2OTQ3MyJ9&amp;al_pri=3DItemCo=
+ntentClickthrough&amp;aoid=3D8Hn75dB6sM4&amp;aoty=3D1&amp;aty=3D4&amp;click=
+_pos=3D4&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b2=
+9a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D=
+1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1=
+_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtz=
+Q%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D=
+8Hn75dB6sM4&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-deco=
+ration:none"><div id=3D"wlIlmt2j47"><div class=3D"truncated_q_text truncate=
+d_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEmail =
+TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j48_truncated" style=3D"line-hei=
+ght:1.6; display:inline">
+<div class=3D"truncated_thumbnail_holder thumbnail_small thumbnail_featured=
+_image" style=3D"display:inline; float:right"><span class=3D"rendered_qtext=
+"><div class=3D"ui_qtext_image_outer"><div class=3D"qtext_image_wrapper"><i=
+mg class=3D"landscape qtext_image zoomable_in_feed" src=3D"http://qph.fs.qu=
+oracdn.net/main-qimg-38fcf58c0b9150b170c3a9a8e8510493" master_src=3D"http:/=
+/qph.fs.quoracdn.net/main-qimg-38fcf58c0b9150b170c3a9a8e8510493" master_w=
+=3D"600" master_h=3D"600" style=3D"-ms-interpolation-mode:bicubic; outline:=
+0; text-decoration:none; border:0; max-width:200px; margin-left:10px; borde=
+r-style:none; float:left; margin-right:5px; max-height:100px" align=3D"left=
+"></div></div></span></div>
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">If my son had=
+ done this, taken at face value as written, his phone was perfectly functio=
+nal and the only perceived wrong with it was that it was not the latest mod=
+el, I <b style=3D"font-weight:400">would</b>...</p></span> <a class=3D"read=
+_more_blue" href=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0e=
+XBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NHwxfDEzNDM2OTQ3MyJ9&amp=
+;al_pri=3DReadMoreLinkClickthrough&amp;aoid=3D8Hn75dB6sM4&amp;aoty=3D1&amp;=
+aty=3D4&amp;click_pos=3D4&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667=
+c7addf61c4b6bb6b29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;sour=
+ce=3D1&amp;src=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C=
+1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3=
+ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=
+=3D1&amp;ty_data=3D8Hn75dB6sM4&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"co=
+lor:#168de9; text-decoration:none">Read More =C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|5|1|133587643"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__=
+w2_wlIlmt2j27_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NXwxfDEzMzU4NzY0MyJ9&amp;al_pri=3DQuesti=
+onLinkClickthrough&amp;aoid=3DakXGEOwBmMY&amp;aoty=3D2&amp;aty=3D4&amp;clic=
+k_pos=3D5&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b=
+29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3D8zZdof8DZb4&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">How was your J=
+EE Main paper?</span></a></td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3DRgg35wIEGhm&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D5&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D8zZdof8DZb4&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j125">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j126_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j126_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j126_link"><img class=3D"profile_photo_img" src=3D"http://qph.fs.quoracd=
+n.net/main-thumb-489552569-50-yvdwlljkrqfifzjrbsxaxnfilkwuwwfs.jpeg" alt=3D=
+"Elima Sharma" style=3D"-ms-interpolation-mode:bicubic; outline:0; text-dec=
+oration:none; border:0; border-radius:100px; display:block; height:40px; wi=
+dth:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3DRgg35wIEGhm&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D5&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D8zZdof8DZb4&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">Elima Sharma</a><span style=3D"font-=
+size:13px">, lives in Kathmandu, Nepal</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3D8zZdof8DZb4&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D5&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D8zZdof8DZb4&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written Fri=
+</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NXwxfDEzMzU4NzY0MyJ9&amp;al_pri=3DItemCo=
+ntentClickthrough&amp;aoid=3D8zZdof8DZb4&amp;aoty=3D1&amp;aty=3D4&amp;click=
+_pos=3D5&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b2=
+9a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D=
+1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1=
+_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtz=
+Q%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D=
+8zZdof8DZb4&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-deco=
+ration:none"><div id=3D"wlIlmt2j51"><div class=3D"truncated_q_text truncate=
+d_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEmail =
+TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j52_truncated" style=3D"line-hei=
+ght:1.6; display:inline">
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">Pretty weird=
+=E2=80=A6</p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline"><b style=3D"font-weight:400">Exam date : 12/=
+04/2019 2nd slot =E2=80=A6</b></p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline">I had my center in Delhi so had to travel 2 =
+days before=E2=80=A6</p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline">10/04 : reached Delhi</p>...</span> <a class=
+=3D"read_more_blue" href=3D"https://www.quora.com/qemail/track_click?al_imp=
+=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NXwxfDEzMzU4NzY0=
+MyJ9&amp;al_pri=3DReadMoreLinkClickthrough&amp;aoid=3D8zZdof8DZb4&amp;aoty=
+=3D1&amp;aty=3D4&amp;click_pos=3D5&amp;ct=3D1555467891635692&amp;et=3D2&amp=
+;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_id=3D1990501924725924020=
+&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bK=
+TroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_=
+b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U=
+&amp;ty=3D1&amp;ty_data=3D8zZdof8DZb4&amp;uid=3DMGukj1ODyua&amp;v=3D0" styl=
+e=3D"color:#168de9; text-decoration:none">Read More =C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|6|1|133008518"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__=
+w2_wlIlmt2j28_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NnwxfDEzMzAwODUxOCJ9&amp;al_pri=3DQuesti=
+onLinkClickthrough&amp;aoid=3DFLE7FekPIQh&amp;aoty=3D2&amp;aty=3D4&amp;clic=
+k_pos=3D6&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b=
+29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3Db21grPhE3ld&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">Is life in US =
+better than India?</span></a></td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3DRgNyUp7TihD&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D6&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db21grPhE3ld&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j132">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j133_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j133_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j133_link"><img class=3D"profile_photo_img" src=3D"http://qph.fs.quoracd=
+n.net/main-thumb-35386297-50-kzmesjlcoejzjrilbkhvfmjpyvajgphm.jpeg" alt=3D"=
+Priyanku Baruah" style=3D"-ms-interpolation-mode:bicubic; outline:0; text-d=
+ecoration:none; border:0; border-radius:100px; display:block; height:40px; =
+width:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3DRgNyUp7TihD&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D6&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db21grPhE3ld&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">Priyanku Baruah</a><span style=3D"fo=
+nt-size:13px">, works at Google</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3Db21grPhE3ld&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D6&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db21grPhE3ld&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written Apr=
+ 9</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8NnwxfDEzMzAwODUxOCJ9&amp;al_pri=3DItemCo=
+ntentClickthrough&amp;aoid=3Db21grPhE3ld&amp;aoty=3D1&amp;aty=3D4&amp;click=
+_pos=3D6&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b2=
+9a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D=
+1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1=
+_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtz=
+Q%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D=
+b21grPhE3ld&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-deco=
+ration:none"><div id=3D"wlIlmt2j55"><div class=3D"truncated_q_text truncate=
+d_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEmail =
+TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j56_truncated" style=3D"line-hei=
+ght:1.6; display:inline">
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">Let me start =
+by telling you some experiences.</p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline">I recently shifted to US. In California, the=
+re are potholes on the roads, large enough to damage the rim of my new car,=
+ which I...</p></span> <a class=3D"read_more_blue" href=3D"https://www.quor=
+a.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5M=
+jQ3MjU5MjQwMjB8NnwxfDEzMzAwODUxOCJ9&amp;al_pri=3DReadMoreLinkClickthrough&a=
+mp;aoid=3Db21grPhE3ld&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D6&amp;ct=3D1=
+555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;re=
+quest_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678=
+91635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8H=
+n75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7=
+C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db21grPhE3ld&amp;uid=
+=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#168de9; text-decoration:none">Rea=
+d More =C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|7|1|60312449"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__w=
+2_wlIlmt2j29_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8N3wxfDYwMzEyNDQ5In0%3D&amp;al_pri=3DQues=
+tionLinkClickthrough&amp;aoid=3DLfjY9SN6wG4&amp;aoty=3D2&amp;aty=3D4&amp;cl=
+ick_pos=3D7&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb=
+6b29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3Db4q6KYjTtzQ&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">Why couldn't A=
+emon Targaryen recognize Jon Snow as his own blood when alive?</span></a></=
+td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3DYgdfcoAevVq&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D7&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db4q6KYjTtzQ&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j139">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j140_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j140_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j140_link"><img class=3D"profile_photo_img" src=3D"http://qsf.fs.quoracd=
+n.net/-3-images.new_grid.profile_pic_default_small.png-26-679bc670f786484c.=
+png" alt=3D"Marc Turcotte" style=3D"-ms-interpolation-mode:bicubic; outline=
+:0; text-decoration:none; border:0; border-radius:100px; display:block; hei=
+ght:40px; width:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3DYgdfcoAevVq&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D7&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db4q6KYjTtzQ&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">Marc Turcotte</a><span style=3D"font=
+-size:13px">, studied MBA in International Business &amp; Engineering at Un=
+iversit=C3=A9 de Sherbrooke</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3Db4q6KYjTtzQ&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D7&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db4q6KYjTtzQ&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written Oct=
+ 18, 2017</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8N3wxfDYwMzEyNDQ5In0%3D&amp;al_pri=3DItem=
+ContentClickthrough&amp;aoid=3Db4q6KYjTtzQ&amp;aoty=3D1&amp;aty=3D4&amp;cli=
+ck_pos=3D7&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6=
+b29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3Db4q6KYjTtzQ&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none"><div id=3D"wlIlmt2j59"><div class=3D"truncated_q_text trunc=
+ated_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEma=
+il TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j60_truncated" style=3D"line-=
+height:1.6; display:inline">
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">I think Aemon=
+ knew that Jon is a Taragaryen. Look back at the scene season 5 ep 5 when h=
+e mentionned =E2=80=9CA Targaryen alone in the world is a terrible thing.=
+=E2=80=9D</p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline">Then Jon comes in ...</p></span> <a class=3D=
+"read_more_blue" href=3D"https://www.quora.com/qemail/track_click?al_imp=3D=
+eyJ0eXBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8N3wxfDYwMzEyNDQ5In0=
+%3D&amp;al_pri=3DReadMoreLinkClickthrough&amp;aoid=3Db4q6KYjTtzQ&amp;aoty=
+=3D1&amp;aty=3D4&amp;click_pos=3D7&amp;ct=3D1555467891635692&amp;et=3D2&amp=
+;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_id=3D1990501924725924020=
+&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bK=
+TroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_=
+b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U=
+&amp;ty=3D1&amp;ty_data=3Db4q6KYjTtzQ&amp;uid=3DMGukj1ODyua&amp;v=3D0" styl=
+e=3D"color:#168de9; text-decoration:none">Read More =C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|8|1|134520435"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__=
+w2_wlIlmt2j30_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8OHwxfDEzNDUyMDQzNSJ9&amp;al_pri=3DQuesti=
+onLinkClickthrough&amp;aoid=3DoNzVxJsrWXU&amp;aoty=3D2&amp;aty=3D4&amp;clic=
+k_pos=3D8&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b=
+29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3DMvUBGDVhxVW&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">My mom won't b=
+uy me an iPhone even though I am her son. What should I do?</span></a></td>=
+</tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3D46Q4YYnsn11&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D8&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3DMvUBGDVhxVW&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j146">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j147_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j147_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j147_link"><img class=3D"profile_photo_img" src=3D"http://qph.fs.quoracd=
+n.net/main-thumb-94641485-50-ksxbmndyocpwupdyibvlqutjvdttxhon.jpeg" alt=3D"=
+Matt Lansell" style=3D"-ms-interpolation-mode:bicubic; outline:0; text-deco=
+ration:none; border:0; border-radius:100px; display:block; height:40px; wid=
+th:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3D46Q4YYnsn11&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D8&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3DMvUBGDVhxVW&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">Matt Lansell</a><span style=3D"font-=
+size:13px">, Carer for Intelectually Handicapped Adults (2002-present)</spa=
+n>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3DMvUBGDVhxVW&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D8&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3DMvUBGDVhxVW&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written 2h =
+ago</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8OHwxfDEzNDUyMDQzNSJ9&amp;al_pri=3DItemCo=
+ntentClickthrough&amp;aoid=3DMvUBGDVhxVW&amp;aoty=3D1&amp;aty=3D4&amp;click=
+_pos=3D8&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b2=
+9a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D=
+1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1=
+_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtz=
+Q%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D=
+MvUBGDVhxVW&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-deco=
+ration:none"><div id=3D"wlIlmt2j63"><div class=3D"truncated_q_text truncate=
+d_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEmail =
+TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j64_truncated" style=3D"line-hei=
+ght:1.6; display:inline">
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">Let=E2=80=99s=
+ have a quick look at your profile eh, Ricardo Gonzalez, and at some of the=
+ 8000+ questions you=E2=80=99ve asked.</p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline">So you=E2=80=99ve got =E2=80=9Ca good amount=
+ of stocks=E2=80=9D, a car, a prepaid cred...</p></span> <a class=3D"read_m=
+ore_blue" href=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXB=
+lIjogMzMsICJoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8OHwxfDEzNDUyMDQzNSJ9&amp;a=
+l_pri=3DReadMoreLinkClickthrough&amp;aoid=3DMvUBGDVhxVW&amp;aoty=3D1&amp;at=
+y=3D4&amp;click_pos=3D8&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7=
+addf61c4b6bb6b29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=
+=3D1&amp;src=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_=
+4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld=
+%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1=
+&amp;ty_data=3DMvUBGDVhxVW&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:=
+#168de9; text-decoration:none">Read More =C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|9|1|131835782"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__=
+w2_wlIlmt2j31_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8OXwxfDEzMTgzNTc4MiJ9&amp;al_pri=3DQuesti=
+onLinkClickthrough&amp;aoid=3DYqZkjRFhAIy&amp;aoty=3D2&amp;aty=3D4&amp;clic=
+k_pos=3D9&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b=
+29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3Db2cWRHZpKgK&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">Can someone ge=
+t a rank after failing thrice in Final CA and left with 3 months to study?<=
+/span></a></td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3DRwYk7qalCia&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D9&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db2cWRHZpKgK&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none"=
+><div id=3D"wlIlmt2j153">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j154_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j154_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j154_link"><img class=3D"profile_photo_img" src=3D"http://qph.fs.quoracd=
+n.net/main-thumb-758773940-50-qbeheseevhfxmhaawkunpyimcyqefnjr.jpeg" alt=3D=
+"Namril Shah" style=3D"-ms-interpolation-mode:bicubic; outline:0; text-deco=
+ration:none; border:0; border-radius:100px; display:block; height:40px; wid=
+th:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3DRwYk7qalCia&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D9&amp;ct=3D1555467=
+891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_=
+id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D15554678916356=
+92&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6=
+sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2c=
+WRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db2cWRHZpKgK&amp;uid=3DMGu=
+kj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight:=
+bold; line-height:1.6; font-size:13px">Namril Shah</a><span style=3D"font-s=
+ize:13px">, C.A. (All India Rank 31) from The Institute of Chartered Accoun=
+tants of India (2...</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3Db2cWRHZpKgK&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D9&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3Db2cWRHZpKgK&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written Apr=
+ 4</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8OXwxfDEzMTgzNTc4MiJ9&amp;al_pri=3DItemCo=
+ntentClickthrough&amp;aoid=3Db2cWRHZpKgK&amp;aoty=3D1&amp;aty=3D4&amp;click=
+_pos=3D9&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b2=
+9a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D=
+1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1=
+_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtz=
+Q%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D=
+b2cWRHZpKgK&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-deco=
+ration:none"><div id=3D"wlIlmt2j67"><div class=3D"truncated_q_text truncate=
+d_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEmail =
+TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j68_truncated" style=3D"line-hei=
+ght:1.6; display:inline">
+<div class=3D"truncated_thumbnail_holder thumbnail_small thumbnail_featured=
+_image" style=3D"display:inline; float:right"><span class=3D"rendered_qtext=
+"><div class=3D"ui_qtext_image_outer"><div class=3D"qtext_image_wrapper"><i=
+mg class=3D"portrait qtext_image zoomable_in zoomable_in_feed" src=3D"http:=
+//qph.fs.quoracdn.net/main-qimg-1694d858f3849aaf9abf53fc05fbb0cc" master_sr=
+c=3D"http://qph.fs.quoracdn.net/main-qimg-eb4efa6fb70dd9babc06a787bd1120a8"=
+ master_w=3D"3024" master_h=3D"3045" style=3D"-ms-interpolation-mode:bicubi=
+c; outline:0; text-decoration:none; border:0; max-width:200px; margin-left:=
+10px; border-style:none; float:left; margin-right:5px; max-height:100px" al=
+ign=3D"left"></div></div></span></div>
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">I believe I=
+=E2=80=99m partly eligible to answer this question because I failed once an=
+d not thrice. Also, I was left with a little above 3 months (103 days) to p=
+repare for the examination.</p>
+<p class=3D"qtext_para u-ltr u-text-align--start" style=3D"margin:1em 0; li=
+ne-height:1.6; display:inline">...</p></span> <a class=3D"read_more_blue" h=
+ref=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsIC=
+JoYXNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8OXwxfDEzMTgzNTc4MiJ9&amp;al_pri=3DRea=
+dMoreLinkClickthrough&amp;aoid=3Db2cWRHZpKgK&amp;aoty=3D1&amp;aty=3D4&amp;c=
+lick_pos=3D9&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6b=
+b6b29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;sr=
+c=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT=
+%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KY=
+jTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_dat=
+a=3Db2cWRHZpKgK&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#168de9; te=
+xt-decoration:none">Read More =C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+<div class=3D"no_para_breaks"><div data-clog-trigger=3D"impression" data-cl=
+og-metadata=3D'{"action_log_target": {"type": 33, "hash": "1990501924725924=
+020|10|1|96162711"}}' data-clog-event-type=3D"ActionLogImpression" id=3D"__=
+w2_wlIlmt2j32_actionable">
+<table class=3D"polish_separator_wrapper" style=3D"border-collapse:collapse=
+; mso-table-lspace:0; mso-table-rspace:0; border:0; cellpadding:0; width:10=
+0%" width=3D"100%"><tbody><tr>
+<td style=3D"border-collapse:collapse"></td>
+<td class=3D"polish_separator" style=3D"border-collapse:collapse; border-bo=
+ttom:1px solid #e2e2e2; height:1px; width:140px" height=3D"1" width=3D"140"=
+></td>
+<td style=3D"border-collapse:collapse"></td>
+</tr></tbody></table>
+<table class=3D"story_wrapper" cellspacing=3D"0" border=3D"0" style=3D"bord=
+er-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" w=
+idth=3D"100%"><tbody><tr><td class=3D"story" style=3D"border-collapse:colla=
+pse; border-bottom:0; padding:20px 0"><table class=3D"digest_story_wrapper"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse:=
+collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D"100%=
+"><tbody>
+<tr><td class=3D"reason" style=3D"border-collapse:collapse; padding-bottom:=
+4px"><table class=3D"digest_reason" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-=
+rspace:0"><tbody><tr>
+<td valign=3D"top" style=3D"border-collapse:collapse"></td>
+<td class=3D"reason_text" style=3D"border-collapse:collapse; color:#999; fo=
+nt-size:11px; letter-spacing:0.2px"></td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><a class=3D"question_text" href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8MTB8MXw5NjE2MjcxMSJ9&amp;al_pri=3DQuesti=
+onLinkClickthrough&amp;aoid=3D8fpPCsgDlIi&amp;aoty=3D2&amp;aty=3D4&amp;clic=
+k_pos=3D10&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6=
+b29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3D1nsSbldkE5U&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none; display:block; font-size:19px; font-weight:bold; letter-spa=
+cing:-0.5px; line-height:1.4"><span class=3D"rendered_qtext">Are carbohydra=
+tes really making us fat, or are we eating too much and exercising too litt=
+le? After all, many of our ancestors ate bread, potatoes, rice and pasta wi=
+thout weight gain. What do you think?</span></a></td></tr>
+<tr><td style=3D"border-collapse:collapse"><table class=3D"item_content_wra=
+pper" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-coll=
+apse:collapse; mso-table-lspace:0; mso-table-rspace:0; width:100%" width=3D=
+"100%"><tbody>
+<tr><td class=3D"content_header metadata" style=3D"border-collapse:collapse=
+; padding:8px 0"><table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" st=
+yle=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rspace:0"><t=
+body><tr>
+<td class=3D"content_header_photo" style=3D"border-collapse:collapse; verti=
+cal-align:top" valign=3D"top"><a href=3D"https://www.quora.com/qemail/track=
+_click?aoid=3D8RbVNbPdD7x&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D10&amp;c=
+t=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&a=
+mp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D155=
+5467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7=
+C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVh=
+xVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D1nsSbldkE5U&am=
+p;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#2b6dad; text-decoration:none=
+"><div id=3D"wlIlmt2j160">
+<div class=3D"hover_menu hidden white_bg show_nub" id=3D"__w2_wlIlmt2j161_m=
+enu"><div class=3D"hover_menu_contents" id=3D"__w2_wlIlmt2j161_menu_content=
+s"> </div></div>
+<span class=3D"photo_tooltip Photo HoverMenu IdentityPhoto" id=3D"__w2_wlIl=
+mt2j161_link"><img class=3D"profile_photo_img" src=3D"http://qph.fs.quoracd=
+n.net/main-thumb-114964157-50-oyyudkfbakbdratmmtmsroihdjfocpib.jpeg" alt=3D=
+"Richard Reynolds" style=3D"-ms-interpolation-mode:bicubic; outline:0; text=
+-decoration:none; border:0; border-radius:100px; display:block; height:40px=
+; width:40px; border-style:none" height=3D"40" width=3D"40"></span>
+</div></a></td>
+<td class=3D"content_header_text" style=3D"border-collapse:collapse; paddin=
+g-left:8px; color:#333"><table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-rsp=
+ace:0"><tbody>
+<tr><td style=3D"border-collapse:collapse">
+<a class=3D"user_link" href=3D"https://www.quora.com/qemail/track_click?aoi=
+d=3D8RbVNbPdD7x&amp;aoty=3D3&amp;aty=3D4&amp;click_pos=3D10&amp;ct=3D155546=
+7891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request=
+_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555467891635=
+692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB=
+6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2=
+cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D1nsSbldkE5U&amp;uid=3DMG=
+ukj1ODyua&amp;v=3D0" style=3D"color:#333; text-decoration:none; font-weight=
+:bold; line-height:1.6; font-size:13px">Richard Reynolds</a><span style=3D"=
+font-size:13px">, I am an Executive Chef, Certified by the American Culinar=
+y Federation in 2002.</span>
+</td></tr>
+<tr><td class=3D"answer_details" style=3D"border-collapse:collapse; color:#=
+999; font-size:13px"><a href=3D"https://www.quora.com/qemail/track_click?ao=
+id=3D1nsSbldkE5U&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D10&amp;ct=3D15554=
+67891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;reques=
+t_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D155546789163=
+5692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75d=
+B6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b=
+2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D1nsSbldkE5U&amp;uid=3DM=
+Gukj1ODyua&amp;v=3D0" style=3D"color:#999; text-decoration:none">Written Au=
+g 20, 2018</a></td></tr>
+</tbody></table></td>
+</tr></tbody></table></td></tr>
+<tr><td class=3D"item_content" style=3D'border-collapse:collapse; color:#33=
+3; display:block; font-family:Georgia, Times, "Times New Roman", "Hiragino =
+Kaku Gothic Pro", "Meiryo", serif; font-size:15px; line-height:1.4'><a href=
+=3D"https://www.quora.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoY=
+XNoIjogIjE5OTA1MDE5MjQ3MjU5MjQwMjB8MTB8MXw5NjE2MjcxMSJ9&amp;al_pri=3DItemCo=
+ntentClickthrough&amp;aoid=3D1nsSbldkE5U&amp;aoty=3D1&amp;aty=3D4&amp;click=
+_pos=3D10&amp;ct=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b=
+29a1b5747dc1d&amp;request_id=3D1990501924725924020&amp;source=3D1&amp;src=
+=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%=
+7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYj=
+TtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=
+=3D1nsSbldkE5U&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#333; text-d=
+ecoration:none"><div id=3D"wlIlmt2j71"><div class=3D"truncated_q_text trunc=
+ated_para_breaks TruncatedAnswer TruncatedQText TruncatedAnswerForDigestEma=
+il TruncatedAnswerForEmail" id=3D"__w2_wlIlmt2j72_truncated" style=3D"line-=
+height:1.6; display:inline">
+<span class=3D"rendered_qtext"><p class=3D"qtext_para u-ltr u-text-align--s=
+tart" style=3D"margin:1em 0; line-height:1.6; display:inline">I can only us=
+e my experience as an example of how I dropped 5o pounds without exercising=
+. I did two things 1) I stopped eating grains, sugar, and bad fats. My diet=
+ consiste...</p></span> <a class=3D"read_more_blue" href=3D"https://www.quo=
+ra.com/qemail/track_click?al_imp=3DeyJ0eXBlIjogMzMsICJoYXNoIjogIjE5OTA1MDE5=
+MjQ3MjU5MjQwMjB8MTB8MXw5NjE2MjcxMSJ9&amp;al_pri=3DReadMoreLinkClickthrough&=
+amp;aoid=3D1nsSbldkE5U&amp;aoty=3D1&amp;aty=3D4&amp;click_pos=3D10&amp;ct=
+=3D1555467891635692&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&am=
+p;request_id=3D1990501924725924020&amp;source=3D1&amp;src=3D1&amp;st=3D1555=
+467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C=
+1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhx=
+VW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;ty=3D1&amp;ty_data=3D1nsSbldkE5U&amp=
+;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"color:#168de9; text-decoration:none"=
+>Read More =C2=BB</a>
+</div></div></a></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+</div></div>
+</td></tr></tbody></table></td>
+<td class=3D"w30" style=3D"border-collapse:collapse"> </td>
+</tr></tbody></table></td></tr>
+<tr><td style=3D"border-collapse:collapse"><div class=3D"polish_button_wrap=
+per" style=3D"margin-bottom:25px; text-align:center" align=3D"center"><a cl=
+ass=3D"polish_action_button" href=3D"https://www.quora.com/qemail/track_cli=
+ck?aoid&amp;aoty=3D7&amp;aty=3D4&amp;click_pos=3D0&amp;ct=3D155546789163569=
+2&amp;et=3D2&amp;id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_id=3D199=
+0501924725924020&amp;source&amp;src=3D1&amp;st=3D1555467891635692&amp;stori=
+es=3D1_dE4bKTroFSh%7C1_4GKdVcH40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZd=
+of8DZb4%7C1_b21grPhE3ld%7C1_b4q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1=
+_1nsSbldkE5U&amp;ty&amp;ty_data&amp;uid=3DMGukj1ODyua&amp;v=3D0" style=3D"c=
+olor:#fff; text-decoration:none; background-color:#168de9; border-radius:3p=
+x; box-shadow:0 1px 1px 0 rgba(200, 200, 200, 0.2); cursor:pointer; display=
+:inline-block; font-size:15px; line-height:1.4; outline:0; padding:15px 25p=
+x; text-align:center" bgcolor=3D"#168de9" align=3D"center">Read More in You=
+r Feed</a></div></td></tr>
+<tr><td style=3D"border-collapse:collapse"><table cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" align=3D"center" style=3D"border-collapse:collapse;=
+ mso-table-lspace:0; mso-table-rspace:0">
+<tr><td style=3D"border-collapse:collapse"><div class=3D"social_links" styl=
+e=3D"color:#999; margin-top:16px; text-align:center" align=3D"center">
+<div class=3D"follow_text">Follow Quora on:</div>
+<a href=3D"http://www.quora.com/l/8fkpPDlyDAPpYPgUvTaBz7x59rrblOr9FHzg7r01m=
+6u9Mbi5Hwv1" style=3D"color:#2b6dad; text-decoration:none"><img class=3D"ic=
+on_facebook" src=3D"http://qsf.fs.quoracdn.net/-3-images.new_grid.facebook_=
+white_bg_2x.png-26-857db968c13adc73.png" alt=3D"Facebook" style=3D"-ms-inte=
+rpolation-mode:bicubic; outline:0; text-decoration:none; border:0; height:3=
+2px; margin-right:8px; width:32px" height=3D"32" width=3D"32"></a><a href=
+=3D"http://www.quora.com/l/eBcf76OVcQnPtw0XNiTB6kO7UA3CkYpqt6oPFzXGOYtudC8o=
+v1" style=3D"color:#2b6dad; text-decoration:none"><img class=3D"icon_twitte=
+r" src=3D"http://qsf.fs.quoracdn.net/-3-images.icons.twitter_bird.png-26-f5=
+14e8ff3a68b487.png" alt=3D"Twitter" style=3D"-ms-interpolation-mode:bicubic=
+; outline:0; text-decoration:none; border:0; height:24px; margin-bottom:4px=
+; width:30px" height=3D"24" width=3D"30"></a>
+</div></td></tr>
+<tr><td style=3D"border-collapse:collapse"><div class=3D"app_links" style=
+=3D"color:#999; margin-top:16px; text-align:center" align=3D"center">
+<div>Get the App for iOS and Android</div>
+<a href=3D"http://www.quora.com/app?campaign=3Demail_footer_links" style=3D=
+"color:#2b6dad; text-decoration:none"><img class=3D"icon_quora" src=3D"http=
+://qsf.fs.quoracdn.net/-3-images.apple_touch_icon.png-26-daab15aca98e332a.p=
+ng" alt=3D"Quora" style=3D"-ms-interpolation-mode:bicubic; outline:0; text-=
+decoration:none; border:0; border-radius:3px; height:32px; margin-top:8px; =
+width:32px" height=3D"32" width=3D"32"></a>
+</div></td></tr>
+</table></td></tr>
+</tbody></table></td></tr>
+<tr><td class=3D"polish_footer_section footer_container_wrapper" align=3D"c=
+enter" style=3D"border-collapse:collapse; max-width:525px; margin-top:16px"=
+><table class=3D"footer_container" cellpadding=3D"0" cellspacing=3D"0" bord=
+er=3D"0" style=3D"border-collapse:collapse; mso-table-lspace:0; mso-table-r=
+space:0; color:#999; font-size:11px; padding-top:16px; text-align:center; w=
+idth:100%" align=3D"center" width=3D"100%"><tr><td style=3D"border-collapse=
+:collapse"><div class=3D"footer_text_wrapper" style=3D"padding:25px 20px"><=
+div>
+<span style=3D"color:#999; display:block; padding-bottom:8px">This email wa=
+s sent by Quora (650 Castro Street #450, Mountain View, CA 94041). </span><=
+span style=3D"color:#999; display:block; padding-bottom:8px">If you don't w=
+ant to receive this type of email in the future, please <a class=3D"unsubsc=
+ribe_link" href=3D"http://www.quora.com/email_optout/qemail_unsubscribe?ema=
+il_track_id=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;t=3D1555467892313310&amp=
+;token=3D528ce8955ada335238b2708aa28b68993e629de6d27569a82a4d59c72cde60cada=
+28bbea0abae90a5bd20a496bcfb0ee2c81403bec9ac687961c1b397cf5d915&amp;type=3D2=
+&amp;uid=3D329051762" style=3D"color:#999; text-decoration:underline">unsub=
+scribe</a>.<img class=3D"tracking_img" width=3D"1" height=3D"1" src=3D"http=
+s://www.quora.com/qemail/mark_read?ct=3D1555467891635692&amp;et=3D2&amp;id=
+=3D667c7addf61c4b6bb6b29a1b5747dc1d&amp;request_id=3D1990501924725924020&am=
+p;src=3D1&amp;st=3D1555467891635692&amp;stories=3D1_dE4bKTroFSh%7C1_4GKdVcH=
+40DT%7C1_1R2N8OzAVLQ%7C1_8Hn75dB6sM4%7C1_8zZdof8DZb4%7C1_b21grPhE3ld%7C1_b4=
+q6KYjTtzQ%7C1_MvUBGDVhxVW%7C1_b2cWRHZpKgK%7C1_1nsSbldkE5U&amp;uid=3DMGukj1O=
+Dyua&amp;v=3D0" style=3D"-ms-interpolation-mode:bicubic; outline:0; text-de=
+coration:none"></span><span style=3D"color:#999; display:block; padding-bot=
+tom:8px"><a href=3D"http://www.quora.com/" style=3D"color:#999; text-decora=
+tion:underline">http://www.quora.com/</a></span>
+</div></div></td></tr></table></td></tr>
+</tbody></table></td></tr></tbody></table>
+<style type=3D"text/css">h1 a:active {color:red}
+h2 a:active {color:red}
+h3 a:active {color:red}
+h4 a:active {color:red}
+h5 a:active {color:red}
+h6 a:active {color:red}
+h1 a:visited {color:purple}
+h2 a:visited {color:purple}
+h3 a:visited {color:purple}
+h4 a:visited {color:purple}
+h5 a:visited {color:purple}
+h6 a:visited {color:purple}
+.polish_button_wrapper .polish_action_button:hover {opacity:0.8}
+@media (max-width: 812px) {
+    .ad_email_background .ad_table {
+        margin: 0
+        }
+    }
+.polish_button_wrapper .polish_action_button:hover {opacity:0.8}
+@media (max-width: 812px) {
+    .ad_email_background .ad_table {
+        margin: 0
+        }
+    }</style>
+</body>
+</html>
+</body></html>
+--===============0723980183040625210==--
