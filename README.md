@@ -55,7 +55,7 @@ An experiment is conducted in order to identify the input/output behavior of the
 2. Graph plot of evaluation metrics vs score for different ML models on HSD dataset.
 ![HSD metrics](https://user-images.githubusercontent.com/33484737/118262893-26fac580-b4d3-11eb-961a-5b6a3e8f6eb6.jpg)
 
-### Resukt Analysis
+### Result Analysis
 
 1. Graph plot of Machine Learning models vs Accuracy for SpamAssassin dataset.
 ![Spam metrics ML](https://user-images.githubusercontent.com/33484737/118262895-282bf280-b4d3-11eb-9d83-f4a5ceacb871.jpg)
